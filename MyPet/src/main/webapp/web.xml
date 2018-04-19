@@ -49,6 +49,6 @@
 	<servlet-mapping>
 		<servlet-name>shop-manager</servlet-name>
 		<!-- 拦截所有请求，静态资源也会请求 ，需要在springmvc.xml中添加静态资源映射-->
-		<url-pattern>/</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -7,27 +7,26 @@ import java.util.Date;
  *
  */
 public class User {
-	//用户id
     private Long id;
-    //用户名
+
     private String username;
-    //密码
+
     private String pwd;
-    //身份
+
     private String identity;
-    //性别
+
     private String sex;
-    //年龄
+
     private Byte age;
-    //地址
+
     private String address;
-    //电话
+
     private String phone;
-    //邮箱
+
     private String email;
-    //创建日期
+
     private Date created;
-    //更新日期
+
     private Date updated;
 
     public Long getId() {

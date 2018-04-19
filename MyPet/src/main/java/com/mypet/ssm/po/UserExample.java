@@ -3,11 +3,7 @@ package com.mypet.ssm.po;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-/**
- * User条件查询类
- * @author Dan
- *
- */
+
 public class UserExample {
     protected String orderByClause;
 

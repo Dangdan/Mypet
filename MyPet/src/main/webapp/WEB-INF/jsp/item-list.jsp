@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<table class="easyui-datagrid" id="itemList" title="商品列表" 
+<table class="easyui-datagrid" id="itemList" title="宠物列表" 
        data-options="singleSelect:false,collapsible:true,pagination:true,url:'/item/list',method:'get',pageSize:30,toolbar:toolbar">
     <thead>
         <tr>
         	<th data-options="field:'ck',checkbox:true"></th>
-        	<th data-options="field:'id',width:60">商品ID</th>
-            <th data-options="field:'title',width:200">商品标题</th>
+        	<th data-options="field:'id',width:60">宠物ID</th>
+            <th data-options="field:'title',width:200">宠物标题</th>
             <th data-options="field:'cid',width:100">叶子类目</th>
             <th data-options="field:'sellPoint',width:100">卖点</th>
             <th data-options="field:'price',width:70,align:'right',formatter:TAOTAO.formatPrice">价格</th>
@@ -17,7 +17,7 @@
         </tr>
     </thead>
 </table>
-<div id="itemEditWindow" class="easyui-window" title="编辑商品" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/rest/page/item-edit'" style="width:80%;height:80%;padding:10px;">
+<div id="itemEditWindow" class="easyui-window" title="编辑宠物" data-options="modal:true,closed:true,iconCls:'icon-save',href:'/rest/page/item-edit'" style="width:80%;height:80%;padding:10px;">
 </div>
 <script>
 
@@ -36,7 +36,7 @@
         text:'新增',
         iconCls:'icon-add',
         handler:function(){
-        	$(".tree-title:contains('新增商品')").parent().click();
+        	$(".tree-title:contains('新增宠物')").parent().click();
         }
     },{
         text:'编辑',
@@ -44,11 +44,11 @@
         handler:function(){
         	var ids = getSelectionsIds();
         	if(ids.length == 0){
-        		$.messager.alert('提示','必须选择一个商品才能编辑!');
+        		$.messager.alert('提示','必须选择一个宠物才能编辑!');
         		return ;
         	}
         	if(ids.indexOf(',') > 0){
-        		$.messager.alert('提示','只能选择一个商品!');
+        		$.messager.alert('提示','只能选择一个宠物!');
         		return ;
         	}
         	
@@ -59,7 +59,7 @@
         			data.priceView = TAOTAO.formatPrice(data.price);
         			$("#itemeEditForm").form("load",data);
         			
-        			// 加载商品描述
+        			// 加载宠物描述
         			$.getJSON('/rest/item/query/item/desc/'+data.id,function(_data){
         				if(_data.status == 200){
         					//UM.getEditor('itemeEditDescEditor').setContent(_data.data.itemDesc, false);
@@ -67,14 +67,14 @@
         				}
         			});
         			
-        			//加载商品规格
+        			//加载宠物规格
         			$.getJSON('/rest/item/param/item/query/'+data.id,function(_data){
         				if(_data && _data.status == 200 && _data.data && _data.data.paramData){
         					$("#itemeEditForm .params").show();
         					$("#itemeEditForm [name=itemParams]").val(_data.data.paramData);
         					$("#itemeEditForm [name=itemParamId]").val(_data.data.id);
         					
-        					//回显商品规格
+        					//回显宠物规格
         					 var paramData = JSON.parse(_data.data.paramData);
         					
         					 var html = "<ul>";
@@ -111,15 +111,15 @@
         handler:function(){
         	var ids = getSelectionsIds();
         	if(ids.length == 0){
-        		$.messager.alert('提示','未选中商品!');
+        		$.messager.alert('提示','未选中宠物!');
         		return ;
         	}
-        	$.messager.confirm('确认','确定删除ID为 '+ids+' 的商品吗？',function(r){
+        	$.messager.confirm('确认','确定删除ID为 '+ids+' 的宠物吗？',function(r){
         	    if (r){
         	    	var params = {"ids":ids};
                 	$.post("/rest/item/delete",params, function(data){
             			if(data.status == 200){
-            				$.messager.alert('提示','删除商品成功!',undefined,function(){
+            				$.messager.alert('提示','删除宠物成功!',undefined,function(){
             					$("#itemList").datagrid("reload");
             				});
             			}
@@ -133,15 +133,15 @@
         handler:function(){
         	var ids = getSelectionsIds();
         	if(ids.length == 0){
-        		$.messager.alert('提示','未选中商品!');
+        		$.messager.alert('提示','未选中宠物!');
         		return ;
         	}
-        	$.messager.confirm('确认','确定下架ID为 '+ids+' 的商品吗？',function(r){
+        	$.messager.confirm('确认','确定下架ID为 '+ids+' 的宠物吗？',function(r){
         	    if (r){
         	    	var params = {"ids":ids};
                 	$.post("/rest/item/instock",params, function(data){
             			if(data.status == 200){
-            				$.messager.alert('提示','下架商品成功!',undefined,function(){
+            				$.messager.alert('提示','下架宠物成功!',undefined,function(){
             					$("#itemList").datagrid("reload");
             				});
             			}
@@ -155,15 +155,15 @@
         handler:function(){
         	var ids = getSelectionsIds();
         	if(ids.length == 0){
-        		$.messager.alert('提示','未选中商品!');
+        		$.messager.alert('提示','未选中宠物!');
         		return ;
         	}
-        	$.messager.confirm('确认','确定上架ID为 '+ids+' 的商品吗？',function(r){
+        	$.messager.confirm('确认','确定上架ID为 '+ids+' 的宠物吗？',function(r){
         	    if (r){
         	    	var params = {"ids":ids};
                 	$.post("/rest/item/reshelf",params, function(data){
             			if(data.status == 200){
-            				$.messager.alert('提示','上架商品成功!',undefined,function(){
+            				$.messager.alert('提示','上架宠物成功!',undefined,function(){
             					$("#itemList").datagrid("reload");
             				});
             			}
