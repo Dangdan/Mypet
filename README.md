@@ -1,0 +1,2 @@
+# Mypet
+This is a web project that can help you publish pet information or adopt a pet. It uses the SSM framework as the basic framework, the front end mainly uses jQuery, Bootstrap and so on. The most important feature is the use of nginx and vsftpd to build a picture server, which realizes the separation of dynamic and static resources, the main realization in FTPUtils You are welcome to give your opinion.
