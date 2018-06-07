@@ -1,0 +1,15 @@
+/* 
+* @Author: C
+* @Date:   2016-05-12 16:10:37
+* @Last Modified by:   Marte
+* @Last Modified time: 2016-05-18 20:36:17
+*/
+.baseInformation{
+    padding-top: 20px;
+    font-size: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+.baseInformation>div{
+    margin-bottom: 20px;
+}
